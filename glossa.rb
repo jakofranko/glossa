@@ -668,9 +668,29 @@ module Glossa
 			:maxchar,
 			:minchar
 		def initialize(random = false, options = nil)
-			unless random
-				options ||= {}
-				@phonemes 	= options[:phonemes] 		|| {
+			if random
+				@phonemes = {
+					"C" => shuffled(choose(CON_SETS, 2)[:C])
+					"V" => shuffled(choose(VOW_SETS, 2)[:V])
+					"L" => shuffled(choose(L_SETS, 2)[:L])
+					"S" => shuffled(choose(S_SETS, 2)[:S])
+					"F" => shuffled(choose(F_SETS, 2)[:F])
+				}
+			    @noortho = false
+			    @nomorph = false
+			    @nowordpool = false
+			    @structure = choose(SYLL_STRUCTS)
+			    @restricts = RESTRICT_SETS[2][:res]
+			    @cortho = choose(C_ORTH_SETS, 2)[:orth]
+			    @vortho = choose(V_ORTH_SETS, 2)[:orth]
+			    @minsyll = randrange(1, 3)
+			    @minsyll++ if self.structure.length < 3
+			    @maxsyll = randrange(@minsyll + 1, 7)
+			    @joiner = choose('   -')
+			    return lang
+			else
+			    options ||= {}
+				@phonemes 	= options[:phonemes] 	|| {
 		            "C" => "ptkmnls",
 		            "V" => "aeiou",
 		            "S" => "s",
@@ -695,86 +715,5 @@ module Glossa
 				@minchar 	= options[:minchar] 	|| 5
 			end
 		end
-	end
-
-	def make_basic_language()
-		{
-			"phonemes" => {
-	            "C" => "ptkmnls",
-	            "V" => "aeiou",
-	            "S" => "s",
-	            "F" => "mn",
-	            "L" => "rl"
-	        },
-	        "structure" 	=> "CVC",
-	        "exponent" 		=> 2,
-	        "restricts" 	=> [],
-	        "cortho" 		=> {},
-	        "vortho" 		=> {},
-	        "noortho" 		=> true,
-	        "nomorph" 		=> true,
-	        "nowordpool" 	=> true,
-	        "minsyll" 		=> 1,
-	        "maxsyll" 		=> 1,
-	        "morphemes" 	=> {},
-	        "words" 		=> {},
-	        "names" 		=> [],
-	        "joiner" 		=> ' ',
-	        "maxchar" 		=> 12,
-	        "minchar" 		=> 5
-		}
-	end
-	# function makeOrthoLanguage() {
-	#     var lang = makeBasicLanguage();
-	#     lang.noortho = false;
-	#     return lang;
-	# }
-	 
-	def make_ortho_language()
-		lang = make_basic_language()
-		lang.noortho = false
-		lang
-	end
-
-	# function makeRandomLanguage() {
-	#     var lang = makeBasicLanguage();
-	#     lang.noortho = false;
-	#     lang.nomorph = false;
-	#     lang.nowordpool = false;
-	#     lang.phonemes.C = shuffled(choose(consets, 2).C);
-	#     lang.phonemes.V = shuffled(choose(vowsets, 2).V);
-	#     lang.phonemes.L = shuffled(choose(lsets, 2).L);
-	#     lang.phonemes.S = shuffled(choose(ssets, 2).S);
-	#     lang.phonemes.F = shuffled(choose(fsets, 2).F);
-	#     lang.structure = choose(syllstructs);
-	#     lang.restricts = ressets[2].res;
-	#     lang.cortho = choose(corthsets, 2).orth;
-	#     lang.vortho = choose(vorthsets, 2).orth;
-	#     lang.minsyll = randrange(1, 3);
-	#     if (lang.structure.length < 3) lang.minsyll++;
-	#     lang.maxsyll = randrange(lang.minsyll + 1, 7);
-	#     lang.joiner = choose('   -');
-	#     return lang;
-	# }
-
-	def make_random_language()
-		lang = make_basic_language
-		lang.noortho = false
-	    lang.nomorph = false
-	    lang.nowordpool = false
-	    lang.phonemes.C = shuffled(choose(consets, 2).C)
-	    lang.phonemes.V = shuffled(choose(vowsets, 2).V)
-	    lang.phonemes.L = shuffled(choose(lsets, 2).L)
-	    lang.phonemes.S = shuffled(choose(ssets, 2).S)
-	    lang.phonemes.F = shuffled(choose(fsets, 2).F)
-	    lang.structure = choose(syllstructs)
-	    lang.restricts = ressets[2].res
-	    lang.cortho = choose(corthsets, 2).orth
-	    lang.vortho = choose(vorthsets, 2).orth
-	    lang.minsyll = randrange(1, 3)
-	    if (lang.structure.length < 3) lang.minsyll++
-	    lang.maxsyll = randrange(lang.minsyll + 1, 7)
-	    lang.joiner = choose('   -')
-	    return lang
 	end
 end
