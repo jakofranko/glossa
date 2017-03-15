@@ -1,3 +1,5 @@
+# TODO: Import and export as json methods for a language
+# TODO: documentation in README (make sure to link to https://github.com/mewo2/naming-language)
 module Glossa
 	DEFAULT_ORTHO = {
 	    'ʃ' => 'sh',
