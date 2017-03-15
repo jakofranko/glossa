@@ -281,10 +281,12 @@ module Glossa
 			    @cortho = choose(C_ORTH_SETS, 2)[:orth]
 			    @vortho = choose(V_ORTH_SETS, 2)[:orth]
 			    @minsyll = randrange(1, 3)
-			    @minsyll++ if self.structure.length < 3
 			    @maxsyll = randrange(@minsyll + 1, 7)
 			    @joiner = choose('   -')
-			    return lang
+
+			    if @structure.length < 3
+			    	@minsyll += 1;
+			    end
 			else
 			    options ||= {}
 				@phonemes 	= options[:phonemes] 	|| {
