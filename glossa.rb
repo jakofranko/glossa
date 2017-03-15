@@ -262,7 +262,7 @@ module Glossa
 	]
 
 	class Language
-		attr_accessor :phonemes, :structure, :exponent, :restricts, :cortho, :vortho, :noortho, :nomorph, :nowordpool, :minsyll, :maxsyll, :morphemes, :words, :names, :joiner, :maxchar, :minchar
+		attr_accessor :phonemes, :structure, :exponent, :restricts, :cortho, :vortho, :noortho, :nomorph, :nowordpool, :minsyll, :maxsyll, :morphemes, :words, :names, :genitive, :definitive, :joiner, :maxchar, :minchar
 
 		def initialize(random = false, options = nil)
 			if random
@@ -273,16 +273,22 @@ module Glossa
 					"S" => shuffle(choose(S_SETS, 2)[:S]),
 					"F" => shuffle(choose(F_SETS, 2)[:F])
 				}
-			    @noortho = false
-			    @nomorph = false
+			    @noortho 	= false
+			    @nomorph 	= false
 			    @nowordpool = false
-			    @structure = choose(SYLL_STRUCTS)
-			    @restricts = RESTRICT_SETS[2][:res]
-			    @cortho = choose(C_ORTH_SETS, 2)[:orth]
-			    @vortho = choose(V_ORTH_SETS, 2)[:orth]
-			    @minsyll = randrange(1, 3)
-			    @maxsyll = randrange(@minsyll + 1, 7)
-			    @joiner = choose('   -')
+			    @structure 	= choose(SYLL_STRUCTS)
+			    @exponent	= rand(1..3)
+			    @restricts 	= RESTRICT_SETS[2][:res]
+			    @cortho 	= choose(C_ORTH_SETS, 2)[:orth]
+			    @vortho 	= choose(V_ORTH_SETS, 2)[:orth]
+			    @morphemes 	= {}
+			    @words		= {}
+			    @names		= []
+			    @joiner 	= choose('   -')
+			    @maxchar 	= rand(10...15)
+				@minchar 	= rand(3...5)
+			    @minsyll 	= rand(1...3)
+			    @maxsyll 	= rand(@minsyll + 1...7)
 
 			    if @structure.length < 3
 			    	@minsyll += 1;
@@ -295,7 +301,7 @@ module Glossa
 		            "S" => "s",
 		            "F" => "mn",
 		            "L" => "rl"
-		        },
+		        }
 				@structure 	= options[:structure] 	|| "CVC"
 				@exponent 	= options[:exponent] 	|| 2
 				@restricts 	= options[:restricts] 	|| []
@@ -313,6 +319,9 @@ module Glossa
 				@maxchar 	= options[:maxchar] 	|| 12
 				@minchar 	= options[:minchar] 	|| 5
 			end
+
+			@genitive 	= get_morpheme('of')
+			@definitive	= get_morpheme('the')
 		end
 
 		##
@@ -337,18 +346,26 @@ module Glossa
 		end
 
 		##
-		# Takes an array and shuffles it into a random order.
+		# Takes an array or string and shuffles it into a random order.
 		def shuffle(list)
-			new_list = list.dup
+			is_string = list.is_a? String
+			l = is_string ? list.chars : list
+			new_list = l.dup
 
-			list.each_with_index do |item, index|
+			i = 0;
+			l.each do |item|
 				tmp = item
-				rand_index = rand_range(index)
-				new_list[index] = new_list[rand_index]
+				rand_index = rand(i)
+				new_list[i] = new_list[rand_index]
 				new_list[rand_index] = tmp
+				i += 1;
 			end
 
-			new_list
+			if is_string
+				return new_list.join
+			else
+				return new_list
+			end
 		end
 
 		##
@@ -356,7 +373,7 @@ module Glossa
 		# and concatenates them into a single string
 		def join(list, sep = '')
 			return '' if list.length == 0
-			first_word = list[0]
+			first_word = list.shift
 			list.each do |item|
 				first_word << sep << item
 			end
@@ -369,14 +386,15 @@ module Glossa
 		# TODO: Better var names
 		def spell(syllables)
 			return syllables if self.noortho
+			s = syllables.chars
 			word = ''
-			syllables.each do |syllable|
+			s.each do |syllable|
 				if self.cortho[syllable]
 					word << self.cortho[syllable]
 				elsif self.vortho[syllable]
 					word << self.vortho[syllable]
 				elsif DEFAULT_ORTHO[syllable]
-					word << defaultOrtho[syllable]
+					word << DEFAULT_ORTHO[syllable]
 				else
 					word << syllable
 				end
@@ -391,12 +409,18 @@ module Glossa
 		# that it doesn't conflict with a restricted pattern, and then spells the
 		# phonetic word according to the language's orthography.
 		def make_syllable
+			structure = self.structure.chars
 			while true
 				syll = ''
-				self.structure.each_with_index do |ptype, index|
-					if (self.structure[index + 1] == '?') && (rand < 0.5)
-						continue
+				structure.each do |ptype|
+					# If the char is '?', skip with 50% chance to remove last character
+					if ptype == '?'
+						if rand < 0.5
+							syll = syll[0...syll.length - 1]
+						end
+						next
 					end
+					
 					syll << choose(self.phonemes[ptype], self.exponent)
 				end
 				bad = false
@@ -406,7 +430,7 @@ module Glossa
 						break
 					end
 				end
-				continue if bad
+				next if bad
 
 				return spell(syll)
 			end
@@ -439,12 +463,13 @@ module Glossa
 				# No duplicates!
 				bad = false
 				self.morphemes.each do |k|
+					next if self.morphemes[k].nil?
 					if self.morphemes[k].include? morph
 						bad = true
 						break
 					end
 				end
-				continue if bad
+				next if bad
 				list << morph
 				self.morphemes[key] = list
 
@@ -491,9 +516,9 @@ module Glossa
 						break
 					end
 				end
-				continue if bad
+				next if bad
 				words << new_word
-				self.words = words
+				self.words[key] = words
 
 				return new_word
 			end
@@ -507,9 +532,10 @@ module Glossa
 		# and definitive words. After checking to make sure that it's an ok size
 		# and isn't already used, it saves and returns the name
 		def make_name(key = '')
-			self.genitive ||= get_morpheme('of')
-			self.definitive ||= get_morpheme('the')
-
+			## If you don't dup these, words will get concatenated onto them during the join process
+			genitive = self.genitive.dup
+			definitive = self.definitive.dup
+			puts self.definitive
 			while true
 				# 50% chance that the name will be a single word, 50% chance that it will be two words combined somehow
 				name = rand < 0.5 ? get_word(key) : nil
@@ -524,14 +550,14 @@ module Glossa
 					if rand > 0.5
 						name = join([w1, w2], self.joiner)
 					else
-						name = join([w1, self.genitive, w2], self.joiner)
+						name = join([w1, genitive, w2], self.joiner)
 					end
 				end
 
 				# 10% to prefix with definitive
-				name = join([self.definitive, name], self.joiner) if rand < 0.1
-
-				continue if (name.length < self.minchar) || (name.length > self.maxchar)
+				name = join([definitive, name], self.joiner) if rand < 0.1
+				puts self.definitive
+				next if (name.length < self.minchar) || (name.length > self.maxchar)
 
 				used = false
 				self.names.each do |lang_name|
@@ -541,10 +567,10 @@ module Glossa
 					end
 				end
 
-				continue if used
+				next if used
 
-				self.names << name
-				return name
+				self.names << name.capitalize
+				return name.capitalize
 			end
 		end
 	end
