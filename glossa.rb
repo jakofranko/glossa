@@ -1,8 +1,3 @@
-# TODO: All of the things defined at the bottom of language.js should be module constants
-# TODO: Create class 'Language' that's part of the Glossa module
-# TODO: Convert all the makeLanguage type functions into initialization options for the Language class
-# TODO: Anything that's not a constant should either be a module method, or should be instance methods of the Language class
-# TODO: Document a bit better what each function is doing (RDoc comments?)
 module Glossa
 	DEFAULT_ORTHO = {
 	    'ʃ' => 'sh',
@@ -383,7 +378,6 @@ module Glossa
 
 		##
 		# Takes an array of phonetic syllables, and spells it using the languages orthography
-		# TODO: Better var names
 		def spell(syllables)
 			return syllables if self.noortho
 			s = syllables.chars
@@ -487,7 +481,6 @@ module Glossa
 
 			# If a key is defined, then select one of the syllables
 			# to have a morpheme of that type.
-			# TODO: Probably need to fix...
 			keys[rand_range(num_sylls)] = key
 			num_sylls.times { |i| word << get_morpheme(keys[i]) }
 
