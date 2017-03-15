@@ -261,31 +261,15 @@ module Glossa
 	];
 
 	class Language
-		attr_accessor 
-			:phonemes,
-			:structure,
-			:exponent,
-			:restricts,
-			:cortho,
-			:vortho,
-			:noortho,
-			:nomorph,
-			:nowordpool,
-			:minsyll,
-			:maxsyll,
-			:morphemes,
-			:words,
-			:names,
-			:joiner,
-			:maxchar,
-			:minchar
+		attr_accessor :phonemes, :structure, :exponent, :restricts, :cortho, :vortho, :noortho, :nomorph, :nowordpool, :minsyll, :maxsyll, :morphemes, :words, :names, :joiner, :maxchar, :minchar
+
 		def initialize(random = false, options = nil)
 			if random
 				@phonemes = {
-					"C" => shuffled(choose(CON_SETS, 2)[:C])
-					"V" => shuffled(choose(VOW_SETS, 2)[:V])
-					"L" => shuffled(choose(L_SETS, 2)[:L])
-					"S" => shuffled(choose(S_SETS, 2)[:S])
+					"C" => shuffled(choose(CON_SETS, 2)[:C]),
+					"V" => shuffled(choose(VOW_SETS, 2)[:V]),
+					"L" => shuffled(choose(L_SETS, 2)[:L]),
+					"S" => shuffled(choose(S_SETS, 2)[:S]),
 					"F" => shuffled(choose(F_SETS, 2)[:F])
 				}
 			    @noortho = false
@@ -309,21 +293,21 @@ module Glossa
 		            "F" => "mn",
 		            "L" => "rl"
 		        },
-				@structure 	= options[:structure] 	|| "CVC",
-				@exponent 	= options[:exponent] 	|| 2,
-				@restricts 	= options[:restricts] 	|| [],
-				@cortho 	= options[:cortho] 		|| {},
-				@vortho 	= options[:vortho] 		|| {},
-				@noortho 	= options[:noortho] 	|| true,
-				@nomorph 	= options[:nomorph] 	|| true,
-				@nowordpool = options[:nowordpool] 	|| true,
-				@minsyll 	= options[:minsyll] 	|| 1,
-				@maxsyll 	= options[:maxsyll] 	|| 1,
-				@morphemes 	= options[:morphemes] 	|| {},
-				@words 		= options[:words] 		|| {},
-				@names 		= options[:names] 		|| [],
-				@joiner 	= options[:joiner] 		|| ' ',
-				@maxchar 	= options[:maxchar] 	|| 12,
+				@structure 	= options[:structure] 	|| "CVC"
+				@exponent 	= options[:exponent] 	|| 2
+				@restricts 	= options[:restricts] 	|| []
+				@cortho 	= options[:cortho] 		|| {}
+				@vortho 	= options[:vortho] 		|| {}
+				@noortho 	= options[:noortho] 	|| true
+				@nomorph 	= options[:nomorph] 	|| true
+				@nowordpool = options[:nowordpool] 	|| true
+				@minsyll 	= options[:minsyll] 	|| 1
+				@maxsyll 	= options[:maxsyll] 	|| 1
+				@morphemes 	= options[:morphemes] 	|| {}
+				@words 		= options[:words] 		|| {}
+				@names 		= options[:names] 		|| []
+				@joiner 	= options[:joiner] 		|| ' '
+				@maxchar 	= options[:maxchar] 	|| 12
 				@minchar 	= options[:minchar] 	|| 5
 			end
 		end
@@ -548,7 +532,7 @@ module Glossa
 
 				used = false
 				self.names.each do |lang_name|
-					if name.include? lang_name || lang_name.include? name
+					if(name.include? lang_name || lang_name.include? name)
 						used = true
 						break
 					end
