@@ -394,7 +394,7 @@ module Glossa
 			while true
 				syll = ''
 				self.structure.each_with_index do |ptype, index|
-					if self.structure[index + 1] == '?' && rand < 0.5
+					if (self.structure[index + 1] == '?') && (rand < 0.5)
 						continue
 					end
 					syll << choose(self.phonemes[ptype], self.exponent)
@@ -531,11 +531,11 @@ module Glossa
 				# 10% to prefix with definitive
 				name = join([self.definitive, name], self.joiner) if rand < 0.1
 
-				continue if name.length < self.minchar || name.length > self.maxchar
+				continue if (name.length < self.minchar) || (name.length > self.maxchar)
 
 				used = false
 				self.names.each do |lang_name|
-					if(name.include? lang_name || lang_name.include? name)
+					if (name.include? lang_name) || (lang_name.include? name)
 						used = true
 						break
 					end
