@@ -23,12 +23,12 @@ module Glossa
 
 	C_ORTH_SETS = [
 	    {
-	        "name" => "Default",
-	        "orth" => {}
+	        :name => "Default",
+	        :orth => {}
 	    },
 	    {
-	        "name" => "Slavic",
-	        "orth" => {
+	        :name => "Slavic",
+	        :orth => {
 	            'ʃ' => 'š',
 	            'ʒ' => 'ž',
 	            'ʧ' => 'č',
@@ -37,8 +37,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "German",
-	        "orth" => {
+	        :name => "German",
+	        :orth => {
 	            'ʃ' => 'sch',
 	            'ʒ' => 'zh',
 	            'ʧ' => 'tsch',
@@ -48,8 +48,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "French",
-	        "orth" => {
+	        :name => "French",
+	        :orth => {
 	            'ʃ' => 'ch',
 	            'ʒ' => 'j',
 	            'ʧ' => 'tch',
@@ -58,8 +58,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "Chinese (pinyin)",
-	        "orth" => {
+	        :name => "Chinese (pinyin)",
+	        :orth => {
 	            'ʃ' => 'x',
 	            'ʧ' => 'q',
 	            'ʤ' => 'j',
@@ -69,12 +69,12 @@ module Glossa
 
 	V_ORTH_SETS = [
 	    {
-	        "name" => "Ácutes",
-	        "orth" => {}
+	        :name => "Ácutes",
+	        :orth => {}
 	    },
 	    {
-	        "name" => "Ümlauts",
-	        "orth" => {
+	        :name => "Ümlauts",
+	        :orth => {
 	            "A" => "ä",
 	            "E" => "ë",
 	            "I" => "ï",
@@ -83,8 +83,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "Welsh",
-	        "orth" => {
+	        :name => "Welsh",
+	        :orth => {
 	            "A" => "â",
 	            "E" => "ê",
 	            "I" => "y",
@@ -93,8 +93,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "Diphthongs",
-	        "orth" => {
+	        :name => "Diphthongs",
+	        :orth => {
 	            "A" => "au",
 	            "E" => "ei",
 	            "I" => "ie",
@@ -103,8 +103,8 @@ module Glossa
 	        }
 	    },
 	    {
-	        "name" => "Doubles",
-	        "orth" => {
+	        :name => "Doubles",
+	        :orth => {
 	            "A" => "aa",
 	            "E" => "ee",
 	            "I" => "ii",
@@ -116,124 +116,124 @@ module Glossa
 
 	CON_SETS = [
 	    {
-	        "name" => "Minimal",
-	        "C" => "ptkmnls"
+	        :name => "Minimal",
+	        :C => "ptkmnls"
 	    },
 	    {
-	        "name" => "English-ish",
-	        "C" => "ptkbdgmnlrsʃzʒʧ"
+	        :name => "English-ish",
+	        :C => "ptkbdgmnlrsʃzʒʧ"
 	    },
 	    {
-	        "name" => "Pirahã (very simple)",
-	        "C" => "ptkmnh"
+	        :name => "Pirahã (very simple)",
+	        :C => "ptkmnh"
 	    },
 	    {
-	        "name" => "Hawaiian-ish",
-	        "C" => "hklmnpwʔ"
+	        :name => "Hawaiian-ish",
+	        :C => "hklmnpwʔ"
 	    },
 	    {
-	        "name" => "Greenlandic-ish",
-	        "C" => "ptkqvsgrmnŋlj"
+	        :name => "Greenlandic-ish",
+	        :C => "ptkqvsgrmnŋlj"
 	    },
 	    {
-	        "name" => "Arabic-ish",
-	        "C" => "tksʃdbqɣxmnlrwj"
+	        :name => "Arabic-ish",
+	        :C => "tksʃdbqɣxmnlrwj"
 	    },
 	    {
-	        "name" => "Arabic-lite",
-	        "C" => "tkdgmnsʃ"
+	        :name => "Arabic-lite",
+	        :C => "tkdgmnsʃ"
 	    },
 	    {
-	        "name" => "English-lite",
-	        "C" => "ptkbdgmnszʒʧhjw"
+	        :name => "English-lite",
+	        :C => "ptkbdgmnszʒʧhjw"
 	    }
 	]
 
 	S_SETS = [
 	    {
-	        "name" => "Just s",
-	        "S" => "s"
+	        :name => "Just s",
+	        :S => "s"
 	    },
 	    {
-	        "name" => "s ʃ",
-	        "S" => "sʃ"
+	        :name => "s ʃ",
+	        :S => "sʃ"
 	    },
 	    {
-	        "name" => "s ʃ f",
-	        "S" => "sʃf"
+	        :name => "s ʃ f",
+	        :S => "sʃf"
 	    }
 	]
 
 	L_SETS = [
 	    {
-	        "name" => "r l",
-	        "L" => "rl"
+	        :name => "r l",
+	        :L => "rl"
 	    },
 	    {
-	        "name" => "Just r",
-	        "L" => "r"
+	        :name => "Just r",
+	        :L => "r"
 	    },
 	    {
-	        "name" => "Just l",
-	        "L" => "l"
+	        :name => "Just l",
+	        :L => "l"
 	    },
 	    {
-	        "name" => "w j",
-	        "L" => "wj"
+	        :name => "w j",
+	        :L => "wj"
 	    },
 	    {
-	        "name" => "r l w j",
-	        "L" => "rlwj"
+	        :name => "r l w j",
+	        :L => "rlwj"
 	    }
 	]
 
 	F_SETS = [
 	    {
-	        "name" => "m n",
-	        "F" => "mn"
+	        :name => "m n",
+	        :F => "mn"
 	    },
 	    {
-	        "name" => "s k",
-	        "F" => "sk"
+	        :name => "s k",
+	        :F => "sk"
 	    },
 	    {
-	        "name" => "m n ŋ",
-	        "F" => "mnŋ"
+	        :name => "m n ŋ",
+	        :F => "mnŋ"
 	    },
 	    {
-	        "name" => "s ʃ z ʒ",
-	        "F" => "sʃzʒ"
+	        :name => "s ʃ z ʒ",
+	        :F => "sʃzʒ"
 	    }
 	]
 
 	VOW_SETS = [
 	    {
-	        "name" => "Standard 5-vowel",
-	        "V" => "aeiou"
+	        :name => "Standard 5-vowel",
+	        :V => "aeiou"
 	    },
 	    {
-	        "name" => "3-vowel a i u",
-	        "V" => "aiu"
+	        :name => "3-vowel a i u",
+	        :V => "aiu"
 	    },
 	    {
-	        "name" => "Extra A E I",
-	        "V" => "aeiouAEI"
+	        :name => "Extra A E I",
+	        :V => "aeiouAEI"
 	    },
 	    {
-	        "name" => "Extra U",
-	        "V" => "aeiouU"
+	        :name => "Extra U",
+	        :V => "aeiouU"
 	    },
 	    {
-	        "name" => "5-vowel a i u A I",
-	        "V" => "aiuAI"
+	        :name => "5-vowel a i u A I",
+	        :V => "aiuAI"
 	    },
 	    {
-	        "name" => "3-vowel e o u",
-	        "V" => "eou"
+	        :name => "3-vowel e o u",
+	        :V => "eou"
 	    },
 	    {
-	        "name" => "Extra A O U",
-	        "V" => "aeiouAOU"
+	        :name => "Extra A O U",
+	        :V => "aeiouAOU"
 	    }
 	]
 
@@ -248,16 +248,16 @@ module Glossa
 
 	RESTRICT_SETS = [
 	    {
-	        "name" => "None",
-	        "res" => []
+	        :name => "None",
+	        :res => []
 	    },
 	    {
-	        "name" => "Double sounds",
-	        "res" => [/(.)\1/]
+	        :name => "Double sounds",
+	        :res => [/(.)\1/]
 	    },
 	    {
-	        "name" => "Doubles and hard clusters",
-	        "res" => [/[sʃf][sʃ]/, /(.)\1/, /[rl][rl]/]
+	        :name => "Doubles and hard clusters",
+	        :res => [/[sʃf][sʃ]/, /(.)\1/, /[rl][rl]/]
 	    }
 	]
 
