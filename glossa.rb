@@ -267,11 +267,11 @@ module Glossa
 		def initialize(random = false, options = nil)
 			if random
 				@phonemes = {
-					"C" => shuffled(choose(CON_SETS, 2)[:C]),
-					"V" => shuffled(choose(VOW_SETS, 2)[:V]),
-					"L" => shuffled(choose(L_SETS, 2)[:L]),
-					"S" => shuffled(choose(S_SETS, 2)[:S]),
-					"F" => shuffled(choose(F_SETS, 2)[:F])
+					"C" => shuffle(choose(CON_SETS, 2)[:C]),
+					"V" => shuffle(choose(VOW_SETS, 2)[:V]),
+					"L" => shuffle(choose(L_SETS, 2)[:L]),
+					"S" => shuffle(choose(S_SETS, 2)[:S]),
+					"F" => shuffle(choose(F_SETS, 2)[:F])
 				}
 			    @noortho = false
 			    @nomorph = false
