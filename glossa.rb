@@ -19,7 +19,7 @@ module Glossa
 	    'I' => "í",
 	    'O' => "ó",
 	    'U' => "ú"
-	};
+	}
 
 	C_ORTH_SETS = [
 	    {
@@ -65,7 +65,7 @@ module Glossa
 	            'ʤ' => 'j',
 	        }
 	    }
-	];
+	]
 
 	V_ORTH_SETS = [
 	    {
@@ -112,7 +112,7 @@ module Glossa
 	            "U" => "uu"
 	        }
 	    }
-	];
+	]
 
 	CON_SETS = [
 	    {
@@ -147,7 +147,7 @@ module Glossa
 	        "name" => "English-lite",
 	        "C" => "ptkbdgmnszʒʧhjw"
 	    }
-	];
+	]
 
 	S_SETS = [
 	    {
@@ -162,7 +162,7 @@ module Glossa
 	        "name" => "s ʃ f",
 	        "S" => "sʃf"
 	    }
-	];
+	]
 
 	L_SETS = [
 	    {
@@ -185,7 +185,7 @@ module Glossa
 	        "name" => "r l w j",
 	        "L" => "rlwj"
 	    }
-	];
+	]
 
 	F_SETS = [
 	    {
@@ -204,7 +204,7 @@ module Glossa
 	        "name" => "s ʃ z ʒ",
 	        "F" => "sʃzʒ"
 	    }
-	];
+	]
 
 	VOW_SETS = [
 	    {
@@ -235,7 +235,7 @@ module Glossa
 	        "name" => "Extra A O U",
 	        "V" => "aeiouAOU"
 	    }
-	];
+	]
 
 	SYLL_STRUCTS = [
 	    "CVC",
@@ -243,7 +243,8 @@ module Glossa
 	    "CVVC?", "CVC?", "CV", "VC", "CVF", "C?VC", "CVF?",
 	    "CL?VC", "CL?VF", "S?CVC", "S?CVF", "S?CVC?",
 	    "C?VF", "C?VC?", "C?VF?", "C?L?VC", "VC",
-	    "CVL?C?", "C?VL?C", "C?VLC?"];
+	    "CVL?C?", "C?VL?C", "C?VLC?"
+	]
 
 	RESTRICT_SETS = [
 	    {
@@ -258,7 +259,7 @@ module Glossa
 	        "name" => "Doubles and hard clusters",
 	        "res" => [/[sʃf][sʃ]/, /(.)\1/, /[rl][rl]/]
 	    }
-	];
+	]
 
 	class Language
 		attr_accessor :phonemes, :structure, :exponent, :restricts, :cortho, :vortho, :noortho, :nomorph, :nowordpool, :minsyll, :maxsyll, :morphemes, :words, :names, :joiner, :maxchar, :minchar
