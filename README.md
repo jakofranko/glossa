@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/glossa.svg)](https://badge.fury.io/rb/glossa)
+
 Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-language generator](https://github.com/mewo2/naming-language). These initial ideas are his, and I have changed very little of the actual inner-workings (other than basically turn it into a class). I would _*highly*_ encourage everybody to go and checkout his original repo (link above), [read his documentation on how the language generator works](http://mewo2.com/notes/naming-language/), and [follow @unchartedatlas](https://twitter.com/unchartedatlas)
 
 ## Installation
