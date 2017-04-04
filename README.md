@@ -2,6 +2,10 @@
 
 Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-language generator](https://github.com/mewo2/naming-language). These initial ideas are his, and I have changed very little of the actual inner-workings (other than basically turn it into a class). I would _*highly*_ encourage everybody to go and checkout his original repo (link above), [read his documentation on how the language generator works](http://mewo2.com/notes/naming-language/), and [follow @unchartedatlas](https://twitter.com/unchartedatlas)
 
+## Recent Updates
+
+* v1.0.2 - Minor refactor moving `Glossa::Language` into its own file, removed some debug statements, and fixed a bug that was generating morphemes with a key of `nil`
+
 ## Installation
 
 `gem install glossa`
