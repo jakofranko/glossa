@@ -4,6 +4,7 @@ Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-lan
 
 ## Recent Updates
 
+* v1.0.3-1.0.5 - gemspec description changes (way to go RDoc Markdown processor, you're nothing like the others. I hope you feel special)
 * v1.0.2 - Minor re-factor moving `Glossa::Language` into its own file, removed some debug statements, and fixed a bug that was generating morphemes with a key of `nil`
 
 ## Installation
