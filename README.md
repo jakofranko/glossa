@@ -4,7 +4,7 @@ Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-lan
 
 ## Recent Updates
 
-* v1.0.2 - Minor refactor moving `Glossa::Language` into its own file, removed some debug statements, and fixed a bug that was generating morphemes with a key of `nil`
+* v1.0.2 - Minor re-factor moving `Glossa::Language` into its own file, removed some debug statements, and fixed a bug that was generating morphemes with a key of `nil`
 
 ## Installation
 
