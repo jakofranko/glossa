@@ -153,7 +153,7 @@ class Glossa::Language
 			# Make sure this syllable doesn't violate a restriction
 			bad = false
 			self.restricts.each do |regex|
-				if regex =~ syll
+				if /#{regex}/ =~ syll
 					bad = true
 					break
 				end
