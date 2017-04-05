@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'glossa'
-  s.version     = '1.0.5'
+  s.version     = '1.1.0'
   s.date        = '2017-03-11'
   s.summary     = "A random naming language generator generator"
   s.description = "== Glossa is a tool for generating simple naming language generators (which can in turn generate names).
@@ -9,7 +9,7 @@ Note: Version 1.0.0 is an (almost) direct port of {mewo2's JavaScript naming-lan
 
   s.authors     = ["Jake Franklin"]
   s.email       = 'jacob.d.franklin@gmail.com'
-  s.files       = ["lib/glossa.rb", "lib/glossa/language.rb"]
+  s.files       = ["lib/glossa.rb", "lib/glossa/language.rb", "lib/glossa/import_export.rb"]
   s.homepage    = 'http://rubygems.org/gems/glossa'
   s.license     = 'MIT'
 end
