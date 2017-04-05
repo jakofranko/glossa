@@ -50,4 +50,3 @@ I'll go ahead and put the same ideas as mewo2 had for his language tool, and add
 * Historical sound changes: start with an 'ancestral form' and evolve the word systematically. Do this in multiple ways to produce a family of languages.
 * Generated scripts: why should a generated language use the Roman alphabet? How do these people write things among themselves? Invent an alphabet (or similar) and show how the names are really spelled.
 * Better grammar: break our morphemes out into roots and modifiers, and come up with some rules about how they're combined
-* Import and export functionality for an instance of `Language`
