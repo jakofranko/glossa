@@ -4,6 +4,7 @@ Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-lan
 
 ## Recent Updates
 
+* v1.1.0 - Added import/export functionality! Now you can save your languages for later
 * v1.0.3-1.0.5 - gemspec description changes (way to go RDoc Markdown processor, you're nothing like the others. I hope you feel special)
 * v1.0.2 - Minor re-factor moving `Glossa::Language` into its own file, removed some debug statements, and fixed a bug that was generating morphemes with a key of `nil`
 
@@ -15,7 +16,9 @@ Note: Version 1.0.0 is an (almost) direct port of [mewo2's JavaScript naming-lan
 
 `Glossa` is a module that holds the API for a "naming language generator generator."
 
-You can create a basic language via `lang = Glossa::Language.new`, a random language by `Glossa::Language.new(true)`, or you can create a language with specific rules by passing in a hash: `Glossa::Language.new(false, options)`
+You can create a basic language via `lang = Glossa::Language.new`, a random language by `lang = Glossa::Language.new(true)`, or you can create a language with specific rules by passing in a hash: `Glossa::Language.new(false, options)`
+
+Additionally, you can create an instance of a new language by importing a JSON language file: `lang = Glossa::Language.import(path)`
 
 Creating an instance of `Language` like this will provide you with a name/word generator that follows the specific rules for syllables, phonemes, morphology, orthography etc. that were defined in initialization.
 
@@ -24,6 +27,8 @@ Generate a new name: `lang.make_name([optional type])`. This will create a new n
 Generate a new word: `lang.get_word([optional type])`. Will create a simpler than a name but unique word.
 
 Passing in a type will generate phonemes that have only that type in order to create words that sound unified.
+
+At any time, you can export a JSON file with the state of your language generator (including all the words and names you've already generated) by `lang.export(path)`.
 
 ### Example Usage
 
