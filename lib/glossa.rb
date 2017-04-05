@@ -259,3 +259,4 @@ module Glossa
 end
 
 require "glossa/language"
+require "glossa/import_export"
