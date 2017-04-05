@@ -39,22 +39,22 @@ class Glossa::Language
 	            "F" => "mn",
 	            "L" => "rl"
 	        }
-			@structure 	= options[:structure] 	|| "CVC"
-			@exponent 	= options[:exponent] 	|| 2
-			@restricts 	= options[:restricts] 	|| []
-			@cortho 	= options[:cortho] 		|| {}
-			@vortho 	= options[:vortho] 		|| {}
-			@noortho 	= options[:noortho] 	|| true
-			@nomorph 	= options[:nomorph] 	|| true
-			@nowordpool = options[:nowordpool] 	|| true
-			@minsyll 	= options[:minsyll] 	|| 1
-			@maxsyll 	= options[:maxsyll] 	|| 1
-			@morphemes 	= options[:morphemes] 	|| {}
-			@words 		= options[:words] 		|| {}
-			@names 		= options[:names] 		|| []
-			@joiner 	= options[:joiner] 		|| ' '
-			@maxchar 	= options[:maxchar] 	|| 12
-			@minchar 	= options[:minchar] 	|| 5
+			@structure 	= options['structure'] 	|| "CVC"
+			@exponent 	= options['exponent'] 	|| 2
+			@restricts 	= options['restricts'] 	|| []
+			@cortho 	= options['cortho'] 		|| {}
+			@vortho 	= options['vortho'] 		|| {}
+			@noortho 	= options['noortho'] 	|| true
+			@nomorph 	= options['nomorph'] 	|| true
+			@nowordpool = options['nowordpool'] 	|| true
+			@minsyll 	= options['minsyll'] 	|| 1
+			@maxsyll 	= options['maxsyll'] 	|| 1
+			@morphemes 	= options['morphemes'] 	|| {}
+			@words 		= options['words'] 		|| {}
+			@names 		= options['names'] 		|| []
+			@joiner 	= options['joiner'] 		|| ' '
+			@maxchar 	= options['maxchar'] 	|| 12
+			@minchar 	= options['minchar'] 	|| 5
 		end
 
 		@genitive 	= get_morpheme('of')
@@ -135,6 +135,7 @@ class Glossa::Language
 	# phonetic word according to the language's orthography.
 	def make_syllable
 		structure = self.structure.chars
+
 		while true
 			syll = ''
 			structure.each do |ptype|
