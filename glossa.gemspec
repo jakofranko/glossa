@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'glossa'
-  s.version     = '1.1.1'
+  s.version     = '1.1.2'
   s.date        = '2017-03-11'
   s.summary     = "A random naming language generator generator"
   s.description = "== Glossa is a tool for generating simple naming language generators (which can in turn generate names).

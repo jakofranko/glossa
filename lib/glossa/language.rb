@@ -58,8 +58,13 @@ class Glossa::Language
         end
 
         # Ensure correct data types are used if options are passed in incorrectly
-        int_keys = [@exponent, @minsyll, @maxsyll, @maxchar, @minchar]
-        int_keys.each { |k| if !k.kind_of?(Integer) then k = k.to_i end }
+        int_keys = ['@exponent', '@minsyll', '@maxsyll', '@maxchar', '@minchar']
+        int_keys.each do |k|
+            inst_var = self.instance_variable_get(k)
+            if !inst_var.kind_of?(Integer)
+                self.instance_variable_set(k, inst_var.to_i)
+            end
+        end
 
         @genitive   = get_morpheme('of')
         @definitive = get_morpheme('the')
